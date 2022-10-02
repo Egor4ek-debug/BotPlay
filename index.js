@@ -1,4 +1,5 @@
 import TelegramAPI from 'node-telegram-bot-api';
+import Express from 'express';
 import 'dotenv/config';
 import { gameOptions,againGame } from './options.js';
 const TOKEN = process.env.TOKEN;
@@ -6,6 +7,17 @@ const TOKEN = process.env.TOKEN;
 const bot = new TelegramAPI(TOKEN, { polling: true });
 
 const chats = {};
+
+const app = Express();
+
+const PORT = 3000;
+
+app.get('/', (req, res) => {
+    res.end('<h1>It is a bot!!!!(((((((((=</h1>');
+  });
+  app.listen(PORT, () => {
+    console.log('Server has been started');
+  });
 
 const startGame = async (chatId) => {
   await bot.sendMessage(chatId, 'Я загадал число от 0 до 9, угадыай');
